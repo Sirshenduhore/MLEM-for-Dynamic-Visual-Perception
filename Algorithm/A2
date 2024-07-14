@@ -1,0 +1,28 @@
+Algorithm 2: Sugeno integrals using fuzzy membership function for decision-level fusion
+
+Input:
+- A set of crisp values X = {x1, x2, ..., xn} representing the input values
+- A set of fuzzy membership functions μ1, μ2, ..., μm defined on X
+
+Output:
+- A single crisp value representing the Sugeno integral of the fuzzy membership functions
+
+Begin
+    Input the fuzzy membership function values for each element in the input set.
+    Initialize the numerator and denominator of the Sugeno integral to zero.
+    
+    For each fuzzy membership function μi,
+        Calculate the degree of membership mi(xi) for each input value xi in X.
+        
+    For each input value xi in X,
+        Calculate the weighted value wi = μi(xi) * xi for each fuzzy membership function μi.
+        
+    Sum the weighted values wi for each fuzzy membership function μi.
+    Sum the degrees of membership mi(xi) for each input value xi in X.
+    
+    Divide the sum of the weighted values by the sum of the degrees of membership.
+    
+End For
+
+Return the Sugeno integral value as the output.
+End
