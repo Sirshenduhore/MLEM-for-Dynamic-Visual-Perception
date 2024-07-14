@@ -10,6 +10,6 @@ To install the required packages, run pip install -r requirements.txt.
 
 Basic Usage
 
-First, clone the repository and enter the folder git clone https://github.com/Human-emotion-from-various-media-and-late-fusion.git cd Emotion-detection Download the RAVDESS dataset
+First, clone the repository and enter the folder git clone https://github.com/Sirshenduhore/MLEM-MLEM-for-Dynamic-Visual-Perception 
 
 Algorithm All the alogorithm parting to this projects are available in Algorithm file
