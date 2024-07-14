@@ -1,1 +1,32 @@
+Algorithm1:Categorization of emotions from the Videosample(Vv)using Dynamic Facial Expression
+Input: facial expression of the student's
+Output: Classified emotion
+
+Begin:
+    i = 0, L = number of video samples
+    
+    Do while i < L
+        Split Vv[i] into Vv[i, j] // where j = 0...n
+        
+        Do while j < n
+            Emj = 0
+            
+            If FE -> Vv(i[j])
+                For k = 1...7 // k = 1...7 emotional states
+                    Emj = max(Emj[k]) // where Emj[k] is the emotional state of Vv[i, j]
+                
+                End For
+                Emj = Emj + 1
+            Else
+                Continue
+            End If
+            
+            j = j + 1
+        End Loop
+        
+        Ei = Emj // where Ei is obtained from the subsample Vv[i]
+    End Loop
+    
+    Output Rv
+End
 
