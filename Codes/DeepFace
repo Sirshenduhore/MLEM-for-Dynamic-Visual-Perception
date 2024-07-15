@@ -2,7 +2,7 @@ pip install deepface
 
 % Navigate to the folder where videos are stored
 
-cd '/content/drive/MyDrive/MultiModal/4th/Video/'
+cd '/content/drive/MyDrive/Videos/'
 
 
 import cv2
@@ -25,7 +25,7 @@ models = ["VGG-Face","Facenet","DeepFace"]
 backends = ['opencv']
 emotions={"angry":0,"calm":0,"happy":0,"neutral":0,"sad":0,"surprise":0,"fear":0,"disgust":0}
 label =[]
-cap = cv2.VideoCapture("Face67.mp4")
+cap = cv2.VideoCapture("Face47.mp4")
 property_id = int(cv2.CAP_PROP_FRAME_COUNT)
 length = int(cv2.VideoCapture.get(cap, property_id))
 print( length )
