@@ -6,7 +6,7 @@ Facial expression-based emotion detection applications are increasingly utilized
 
 Dependencies
 
-Python 3, Keras, Sklearn
+Python 3, Keras, Sklearn, DeepFace
 
 To install the required packages, run pip install -r requirements.txt.
 
