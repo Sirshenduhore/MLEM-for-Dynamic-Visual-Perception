@@ -1,0 +1,94 @@
+choquet_data = [
+    [5.05, 0.08, 11.00, 7.93, 37.07, 12.18, 1.04],
+    [5.08, 0.07, 11.40, 7.97, 35.07, 12.93, 1.29],
+    [5.25, 0.09, 11.20, 7.97, 37.27, 11.68, 1.05],
+    [5.50, 0.04, 8.04, 8.09, 40.49, 11.61, 1.08]
+]
+
+sugeno_data = [
+    [5.19, 0.08, 11.04, 7.06, 37.23, 13.31, 0.69],
+    [5.07, 0.08, 11.18, 7.45, 36.47, 13.45, 0.75],
+    [5.70, 0.09, 10.14, 7.26, 36.85, 14.22, 0.62],
+    [5.17, 0.04, 8.95, 8.19, 37.72, 13.12, 0.94]
+]
+
+""" In the above list columns are represntation of : Col1=Anger, Col2=Disgust, Col3=Fear, col4=Happy, col5=Neutral, Col6=Sad, and Col7=Surprise"
+
+import numpy as np
+
+def hybrid_data(choquet_data, sugeno_data, alpha=0.5):
+    """Combines Choquet and Sugeno data using a weighted average.
+
+    Args:
+        choquet_data: A list of lists representing the Choquet data.
+        sugeno_data: A list of lists representing the Sugeno data.
+        alpha: The weight given to the Choquet data (0 <= alpha <= 1).
+
+    Returns:
+        A list of lists representing the hybrid data, formatted to two decimal places.
+    """
+    
+    choquet_array = np.array(choquet_data)
+    sugeno_array = np.array(sugeno_data)
+
+    
+    if choquet_array.shape != sugeno_array.shape:
+        raise ValueError("Choquet and Sugeno data must have the same dimensions.")
+
+    
+    hybrid_array = alpha * choquet_array + (1 - alpha) * sugeno_array
+    
+    # Round to two decimal places
+    hybrid_array_rounded = np.round(hybrid_array, 2).tolist()
+    
+    return hybrid_array_rounded
+
+
+# Ablation Study
+
+def ablation_study(choquet_data, sugeno_data):
+    print("Original Hybrid Data:")
+    hybrid_result = hybrid_data(choquet_data, sugeno_data)
+    for row in hybrid_result:
+        print(row)
+    
+    print("\nAblation Study:")
+    
+    # Ablation of Choquet
+    print("\nWithout Choquet:")
+    hybrid_result_no_choquet = hybrid_data([[0] * len(row) for row in choquet_data], sugeno_data)
+    for row in hybrid_result_no_choquet:
+        print(row)
+
+    # Ablation of Sugeno
+    print("\nWithout Sugeno:")
+    hybrid_result_no_sugeno = hybrid_data(choquet_data, [[0] * len(row) for row in sugeno_data])
+    for row in hybrid_result_no_sugeno:
+        print(row)
+
+    #Ablation of Hybrid
+    print("\nWithout Hybrid:")
+    #Here we just print original choquet and sugeno data
+    print("Choquet:")
+    for row in choquet_data:
+      print(row)
+    print("Sugeno")
+    for row in sugeno_data:
+      print(row)
+
+# Data
+choquet_data = [
+    [5.05, 0.08, 11.00, 7.93, 37.07, 12.18, 1.04],
+    [5.08, 0.07, 11.40, 7.97, 35.07, 12.93, 1.29],
+    [5.25, 0.09, 11.20, 7.97, 37.27, 11.68, 1.05],
+    [5.50, 0.04, 8.04, 8.09, 40.49, 11.61, 1.08]
+]
+
+sugeno_data = [
+    [5.19, 0.08, 11.04, 7.06, 37.23, 13.31, 0.69],
+    [5.07, 0.08, 11.18, 7.45, 36.47, 13.45, 0.75],
+    [5.70, 0.09, 10.14, 7.26, 36.85, 14.22, 0.62],
+    [5.17, 0.04, 8.95, 8.19, 37.72, 13.12, 0.94]
+]
+
+ablation_study(choquet_data, sugeno_data)
